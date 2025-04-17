@@ -1,0 +1,36 @@
+---
+title: "nps-exploration"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+# ---- Load libraries ----
+library(here)
+library(tidyverse)
+library(dplyr)
+library(stringr)
+```
+
+```{r}
+# ---- Load data ----
+load(here("data", "parks.rda"))
+load(here("data", "species.rda"))
+visitation <- read_csv(here("data/park-visitation.csv"))
+```
+
+```{r}
+# ---- Clean data ----
+
+visitation_clean <- visitation |>
+  mutate(ParkName = str_remove(ParkName, " NP"))
+
+```
+
+```{r}
+parks_clean <- parks |>
+  mutate(NationalPark = str_detect(FullName, "National Park")) |>
+  filter(NationalPark == TRUE)
+```
+
