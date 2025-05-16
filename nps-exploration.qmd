@@ -1,9 +1,18 @@
 ---
-title: "NPS Data Cleaning"
+title: "NPS Project Data Cleaning"
+subtitle: "EDS 213 - Final Project"
 author: "Nicole Pepper"
 format: html
 editor_options: 
   chunk_output_type: console
+execute: 
+  eval: true
+  warning: false
+  message: false
+format:
+  html:
+    toc: true 
+    code-fold: true
 ---
 
 ## Set up Workspace

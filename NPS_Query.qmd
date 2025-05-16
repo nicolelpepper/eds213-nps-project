@@ -1,9 +1,13 @@
 ---
-title: "EDS 213 Final Project"
-subtitle: "National Park Popularity Query"
+title: "America's Favorite National Parks Query"
+subtitle: "EDS-213 Final Project"
 author: "Nicole Pepper"
 date: "2025-05-14"
 format: html
+execute: 
+  eval: true
+  warning: false
+  message: false
 editor_options: 
   chunk_output_type: console
 ---
@@ -46,9 +50,9 @@ conn <- dbConnect(duckdb::duckdb(), dbdir = "data/clean/national_parks_analysis.
 ## Queries:
 
 ### 1)  Identify Top 10 Most Popular Parks for Humans
-```{sql}
+```{r}
 
--- Identify Top 10 Most Popular Parks for Humans
+# Identify Top 10 Most Popular Parks for Humans
 
 top_human <- dbGetQuery(conn, "
 -- select fields of interest
@@ -69,16 +73,21 @@ LIMIT 10;
 ")
 
 
-
 ```
 
 Plot Top 10 Most Popular Parks for Humans
 ```{r}
 # Plot  Top 10 Most Popular Parks for Humans
 top_human_plot <- top_human |>
+  # Prep x labels
   mutate(ParkLabel = paste0(FullName, ", ", State))|>
-  ggplot(aes(x = TotalVisits, y = reorder(ParkLabel, TotalVisits))) +
+  
+  # Create barplot
+  ggplot(aes(x = TotalVisits,
+             y = reorder(ParkLabel, TotalVisits))) +
   geom_col(fill = "orange") +
+  
+  # Add x labels
   geom_text(aes(label = label_number(scale = 1e-9,
                                      suffix = " M",
                                      accuracy = 0.01)(TotalVisits)),
@@ -88,7 +97,7 @@ top_human_plot <- top_human |>
   labs(title = "Human's Favorite National Parks",
     x = "Total Visits (2024)",
     y = "National Park") +
-  theme_minimal(base_size = 20) +
+  theme_minimal(base_size = 16) +
   theme(plot.title.position = "plot",
         panel.grid.major.y = element_blank(),
         axis.text.x = element_blank())
@@ -100,8 +109,8 @@ top_human_plot
 
 
 ## 2)  Identify Top 10 Most Popular Parks for Wildlife by Total Species Count
-```{sql}
--- Identify Top 10 Most Popular Parks for Wildlife by Total Species Count
+```{r}
+# Identify Top 10 Most Popular Parks for Wildlife by Total Species Count
 
 top_wildlife <- dbGetQuery(conn, "
 -- select fields of interest
@@ -128,14 +137,19 @@ Plot Top 10 Most Popular Parks for Wildlife by Total Species Count
 ```{r}
 #  Plot Top 10 Most Popular Parks for Wildlife by Total Species Count
 top_wildlife_plot <- top_wildlife |>
+  
+  # Prepare x object labels
   mutate(
     ParkLabel = paste0(FullName, ", ", State),
     LabelFormatted = case_when(
       TotalAnimals >= 1e6 ~ paste0(round(TotalAnimals / 1e6, 2), " M"),
       TotalAnimals >= 1e3 ~ paste0(round(TotalAnimals / 1e3), " K"),
       TRUE ~ as.character(TotalAnimals))) |>
+  
+  # Create bar plot
   ggplot(aes(x = TotalAnimals, y = reorder(ParkLabel, TotalAnimals))) +
   geom_col(fill = "orange") +
+  # Add x labels
   geom_text(aes(label = LabelFormatted),
             hjust = -0.1,
             size = 5) +
@@ -146,7 +160,7 @@ top_wildlife_plot <- top_wildlife |>
     x = "Total Wildlife Counts (2024)",
     y = "National Park") +
   
-  theme_minimal(base_size = 20) +
+  theme_minimal(base_size = 16) +
   
   theme(
     plot.title.position = "plot",
@@ -159,8 +173,8 @@ top_wildlife_plot
 
 
 3)  Identify Top 10 Most Popular Parks for Wildlife by Unique Species Count
-```{sql}
--- Identify Top 10 Most Popular Parks for Wildlife by Unique Species Count
+```{r}
+# Identify Top 10 Most Popular Parks for Wildlife by Unique Species Count
 top_unique_species <- dbGetQuery(conn, "
 -- select fields of interest
 SELECT 
@@ -196,7 +210,7 @@ top_unique_species_plot <- top_unique_species |>
     title = "Wildlife's Favorite National Parks - Most Unique Species",
     x = "Total Unique Species (2024)",
     y = "National Park") +
-  theme_minimal(base_size = 20) +
+  theme_minimal(base_size = 16) +
   theme(plot.title.position = "plot",
         panel.grid.major.y = element_blank(),
         axis.text.x = element_blank())
@@ -206,7 +220,6 @@ top_unique_species_plot
 ```
 
 ```{r}
-
 # --- Find where humans and wildlife have favorites in common ----
 
 # Get unique park names for each dataset
@@ -218,5 +231,14 @@ unique_wildlife_names <- top_unique_species$FullName
 in_all_three <- list(Reduce(intersect, list(park_names, total_wildlife_names, unique_wildlife_names)))
 human_and_total <- list(intersect(park_names, total_wildlife_names))
 human_and_unique <- list(intersect(park_names, unique_wildlife_names))
+
+print("Favorite parks across all three queries (humans, total wildlife, unique species):")
+print(in_all_three[[1]])
+
+print("Favorite parks with both humans and total wildlife observations:")
+print(human_and_total[[1]])
+
+print("Favorite parks with both humans and unique wildlife species:")
+print(human_and_unique[[1]])
 
 ```
