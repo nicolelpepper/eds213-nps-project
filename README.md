@@ -37,6 +37,7 @@ Other Files:
 ### Repo structure:
 
 ```
+eds213-nps-project
 ├── NPS_Data_Prep.qmd
 ├── NPS_Query.html
 ├── NPS_Query.qmd
