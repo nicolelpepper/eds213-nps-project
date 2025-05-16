@@ -8,7 +8,7 @@
 **Author:** Nicole Pepper
 
 <div style="text-align: left;">
-  <img src="https://eds-223-geospatial.github.io/assignments/images/aquaculture.jpg](https://github.com/nicolelpepper/eds213-nps-project/blob/main/images/smnp.jpg" alt="Image" width="700">
+  <img src="https://github.com/nicolelpepper/eds213-nps-project/blob/main/images/smnp.jpg" alt="Image" width="900">
 
 *Image by [Bryson City]([https://unsplash.com/photos/aerial-photography-of-white-frames-on-top-of-water-eUfnha6ev9g](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.explorebrysoncity.com%2Fthings-to-do%2Fgreat-smoky-mountains-national-park%2F&psig=AOvVaw3q7BvdR_njsJ5BcTdUlWuo&ust=1747442266861000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLC6mO7fpo0DFQAAAAAdAAAAABAE))*
 
