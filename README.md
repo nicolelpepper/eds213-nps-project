@@ -24,11 +24,17 @@
 
 - The `species` data is a record of species observations at National Parks from the NPS Biodiversity Dataset. This data was used to assess how popular parks are for different wildlife species. The data is from the NPS, however I accessed it from a [Tidy Tuesday Repo](https://github.com/frankiethull/NPSpecies). The data is stored in `/data/raw` folder in the repo as `species.rda`.
   
-  - The `parks` dataset is from the National Parks Service. It contains information on National Parks. The data is from the NPS, however I accessed it from a [Tidy Tuesday Repo](https://github.com/frankiethull/NPSpecies). The data is stored in `/data/raw` folder in the repo as `parks.rda`.
+- The `parks` dataset is from the National Parks Service. It contains information on National Parks. The data is from the NPS, however I accessed it from a [Tidy Tuesday Repo](https://github.com/frankiethull/NPSpecies). The data is stored in `/data/raw` folder in the repo as `parks.rda`.
     
 - The `visitation` dataset is from the National Parks Service. This data was used to assess how popular a park is based on their annual visitation rates. I accessed it from their [Visitor Use Statistics Dashboard](https://www.nps.gov/subjects/socialscience/visitor-use-statistics-dashboard.htm). The data is stored in `/data/raw` folder in the repo as `park-visitation.csv`.
 
-Other Files:
+- `national_parks.duckdb` is the final relational database that I created for this project. It is stored in the `/data/clean` folder.
+
+**Overview of database structure:**
+ <div style="text-align: left;">
+  <img src="https://github.com/nicolelpepper/eds213-nps-project/blob/main/images/db-diagram.png" alt="Image" width="900">
+
+**Other Files:**
 - `dependencies` A list of the the dependencies and environment requirements used for this analysis are listed in the `dependencies.txt` file.
 - `data cleaning` The data cleaning for this project is located in the file called `NPS_Data_Prep.qmd`
 - `query` & `visualization` The sql query and visualization for this project are located in the file called `NPS_Query.qmd`
