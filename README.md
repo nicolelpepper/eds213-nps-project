@@ -29,8 +29,10 @@
     
 - The `visitation` dataset is from the National Parks Service. This data was used to assess how popular a park is based on their annual visitation rates. I accessed it from their [Visitor Use Statistics Dashboard](https://www.nps.gov/subjects/socialscience/visitor-use-statistics-dashboard.htm). The data is stored in `/data/raw` folder in the repo as `park-visitation.csv`.
 
-A list of the the dependencies and environment requirements used for this analysis are listed in the `dependencies.txt` file.
-
+Other Files:
+- `dependencies` A list of the the dependencies and environment requirements used for this analysis are listed in the `dependencies.txt` file.
+- `data cleaning` The data cleaning for this project is located in the file called `NPS_Data_Prep.qmd`
+- `query` & `visualization` The sql query and visualization for this project are located in the file called `NPS_Query.qmd`
 
 ### Repo structure:
 
