@@ -1,0 +1,2 @@
+load("/Users/nicolepepper/Documents/MEDS/EDS-213/eds213-nps-project/data/parks.rda")
+load("/Users/nicolepepper/Documents/MEDS/EDS-213/eds213-nps-project/data/species.rda")
