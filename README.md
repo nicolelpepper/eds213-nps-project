@@ -14,7 +14,7 @@
 
 ### About the Repo:
 
-[This repository](https://github.com/nicolelpepper/eds213-nps-project) contains a R-Studio Quarto Markdown document of my analysis Finding America's Favorite National Park. For this analysis, I used SQL in R-Studio to clean, merge, and rearrange datasets from the National Park Service into a duck db databse for National Parks popularity.
+[This repository](https://github.com/nicolelpepper/eds213-nps-project) contains Quarto Markdown documents of my R analysis Finding America's Favorite National Park. For this analysis, I used SQL in R-Studio to clean, merge, and rearrange datasets from the National Park Service into a duck db databse for National Parks popularity.
 
 ### Technical Highlights:
 - Programming in R
